@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title TicketengineAlpha
+    = stylesheet_link_tag :application
+    = csrf_meta_tag
+  body
+    .container
+      - if flash[:notice]
+        .notice= flash[:notice]
+      header.span-24
+        = render "layouts/header"
+      #content.span-24
+        = render "layouts/content"
+      footer.span-24
+        = render "layouts/footer"
+      = session.inspect

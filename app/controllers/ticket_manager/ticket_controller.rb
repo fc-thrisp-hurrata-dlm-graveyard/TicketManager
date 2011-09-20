@@ -9,6 +9,8 @@ module TicketManager
     end
 
     def create
+      #Ticket.create(params[:ticket])
+      #redirect_to :back
       newticket = Ticket.create(params[:ticket])
       respond_with(newticket, :locations => ticket_path(newticket))
     end

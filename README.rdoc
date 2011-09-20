@@ -1,3 +1,14 @@
 = TicketManager
 
+sorta kinda doesn't work
+
+ - assets aren't working properly; i.e. the layout isn't rendering
+ - There are some inconsistecies with db access:
+   1 no ready way to get the models to the database
+   2 You need to do explicit Ticket.auto_migrate! to get it into the db
+   3 You can create Tickets by command line, but not through web interface
+     You'll get this message: 
+       NoMethodError in TicketManager::TicketController#create that references the line in the controller 
+       calling the create action
+
 This project rocks and uses MIT-LICENSE.

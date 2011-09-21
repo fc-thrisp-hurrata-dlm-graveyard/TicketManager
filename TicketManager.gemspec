@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.1.0"
   s.add_dependency "jquery-rails"
   s.add_dependency "dm-rails", "~> 1.2.0.rc1"
+  s.add_dependency "dm-is-remixable", "~> 1.2.0.rc1"
   s.add_dependency "slim"
   s.add_dependency "responders"
   s.add_dependency "simple_form"

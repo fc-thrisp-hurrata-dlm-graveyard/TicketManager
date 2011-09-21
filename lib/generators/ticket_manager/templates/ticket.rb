@@ -1,5 +1,3 @@
-DataMapper::Logger.new(STDOUT, :debug)
-DataMapper.logger.debug( "Starting Migration" )
 class Ticket
   include DataMapper::Resource
     

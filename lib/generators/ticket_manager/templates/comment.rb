@@ -1,5 +1,3 @@
-DataMapper::Logger.new(STDOUT, :debug)
-DataMapper.logger.debug( "Starting Migration" )
 module Comment
   include DataMapper::Resource
   is :remixable

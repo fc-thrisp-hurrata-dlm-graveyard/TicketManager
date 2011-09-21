@@ -4,3 +4,7 @@ h1 Add a ticket
     = f.input :priority, :as => :select, :collection => Ticket.priority.flag_map.each_value
     = f.input :content, :as=>:text, :label=>false
     = f.button :submit
+
+/= form_for(Ticket.new, :url => ticket_index_path) do |f|
+  /= f.text_field :content
+  /  tryig to rule out simple_form being an issue

@@ -1,6 +1,0 @@
-h1 Add a ticket
-= simple_form_for Ticket.new, :url => ticket_index_path do |f|
-    /= f.input :tickettag_list, :as=>:select, :collection => Tag.all, :value_method=>:name
-    = f.input :priority, :as => :select, :collection => Ticket.priority.flag_map.each_value
-    = f.input :content, :as=>:text, :label=>false
-    = f.button :submit

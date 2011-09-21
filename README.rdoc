@@ -1,14 +1,38 @@
 = TicketManager
 
-sorta kinda doesn't work
+A minimal helpdesk for your application.
 
- - assets aren't working properly; i.e. the layout isn't rendering
- - There are some inconsistecies with db access:
-   1 no ready way to get the models to the database
-   2 You need to do explicit Ticket.auto_migrate! to get it into the db
-   3 You can create Tickets by command line, but not through web interface
-     You'll get this message: 
-       NoMethodError in TicketManager::TicketController#create that references the line in the controller 
-       calling the create action
+TicketManager is a basic mountable engine for rails that provides facilities for creating and managing tickets pertaining to any issue you require.
 
+
+install: 
+
+  in your gemfile for your application:
+  
+      gem 'ticket-manager', :git=>'https://blueblank@github.com/blueblank/ticket-manager.git'
+
+  in your routes.rb for your application
+   
+     mount TicketManager::Engine => "/TicketManager" (or whatever path you choose)
+
+  run in your application to install models/migrations 
+   
+     rails g ticket_manager:install
+
+Authorization and authentication is left to the user of the engine. As it is constructed there is none.
+
+TODO: 
+
+  - a lot
+  - tune up namespacing to be more cohesive, it works but is ambiguous in some places as moving a previous app to an engine environment has been a learning experience
+  - bring back tagging, it was removed to simplify engine construction
+  - navigation
+  - css, is a mess and needs a web design touch
+    * move css to sass/scss as the previous project did not
+  - aim for a more '1-page' format, i.e. simplify
+  - possibly: components that can be integrated into the main application e.g. creating tickets from your app
+  - possibly: bring in some js niceties
+ 
+Feel free to fork and contribute.
+    
 This project rocks and uses MIT-LICENSE.

@@ -9,6 +9,8 @@ module TicketManager
     end
 
     def create
+      #@aa = params[:ticket]
+      #redirect_to :back if @aa
       #Ticket.create(params[:ticket])
       #redirect_to :back
       newticket = Ticket.create(params[:ticket])

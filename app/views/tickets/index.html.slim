@@ -1,8 +1,0 @@
-/#subnav
-  /- @mytags.each do |mt|
-    /= link_to mt.name, :q=>mt.name
-.addticketform
-  = render :partial=>"forms/newticket"
-#ticketscontainer
-  ul
-    = render :partial=>"ticket", :collection=>@tickets

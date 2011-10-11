@@ -4,28 +4,25 @@ module TicketManager
   module Generators
     class InstallGenerator < Rails::Generators::Base
     desc "This generator copies necessary migrations and models into your application."
+    class_option :separatedb, :type => :boolean, :default => false, :description => "Creates a separate sqlite repository for tickets and comments"
 
       def self.source_root
        @source_root ||= File.join(File.dirname(__FILE__), 'templates')
       end
 
-      #def self.next_migration_number(dirname)
-      #  if ActiveRecord::Base.timestamped_migrations
-      #    Time.new.utc.strftime("%Y%m%d%H%M%S")
-      #  else
-      #    "%.3d" % (current_migration_number(dirname) + 1)
-      #  end
-      #end
-
-      if defined?(ActiveRecord::Base)
-         # not right now
-      end
-
       if defined?(DataMapper::Resource)
 
         def copy_model
-          copy_file "ticket.rb", "app/models/ticket.rb"
-          copy_file "comment.rb", "app/models/comment.rb"
+          if options.separatedb?
+            newconfig = YAML.load(File.open(Rails.root.join("config","database.yml")))
+            newconfig.each do | k,v | 
+              addrepo = { "repositories" => { "ticketengine" => { "adapter" => "sqlite", "database" => "db/"+k.to_s+"_ticketengine.db"}}}
+              v.merge!(addrepo)
+            end 
+            File.open( Rails.root.join("config","database.yml"), 'w+') { |f| f.write( YAML.dump(newconfig) ) }
+          end
+          copy_file "default/ticket.rb", "app/models/ticket.rb"
+          copy_file "default/comment.rb", "app/models/comment.rb"
         end
 
       end

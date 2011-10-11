@@ -13,7 +13,7 @@ install:
 
   in your routes.rb for your application
    
-     mount TicketManager::Engine => "/TicketManager" (or whatever path you choose)
+     mount TicketManager::Engine => "/TicketManager", :as=>"TicketManager" (or whatever path you choose)
 
   run in your application to install models/migrations 
    
@@ -23,16 +23,13 @@ Authorization and authentication is left to the user of the engine. As it is con
 
 TODO: 
 
-  - tests (should be first I guess...)
+  - tests/spec (should be first I guess...)
   - tune up namespacing to be more cohesive, it works but is ambiguous in some places as moving a previous app to an engine environment has been a learning experience
   - bring back tagging, it was removed to simplify engine construction
   - navigation
   - css, is a mess and needs a web design touch
     * move css to sass/scss as the previous project did not
-  - aim for a more '1-page' format, i.e. simplify
-  - possibly: components that can be integrated into the main application e.g. creating tickets from your app
-  - possibly: bring in some js niceties
-  - activerecord support -- but that would require more thought into tagging and future stuff, its a challenge to either keep simple or add functionality
+  - orm sensitivity 
  
 Feel free to fork and contribute.
     
